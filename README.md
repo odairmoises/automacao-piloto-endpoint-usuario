@@ -125,7 +125,7 @@ pip install -r requirements.txt
 
 ---
 
-## 💡 Dicas para alunos
+## 💡 Dicas para QAs
 
 - Se abrir o projeto em outro computador, repita o processo de ambiente virtual e instalação de dependências.
 - Explore os arquivos em `resources/` para entender como as keywords e variáveis são organizadas.
