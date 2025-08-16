@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.11.5 on win32)" generated="2025-08-16T02:18:44.342461" rpa="false" schemaversion="5">
+<suite id="s1" name="Suite Criacao Usuario" source="C:\Users\odair.oliveira\OneDrive - Volaris Group\Documentos\01_automacao\Fase_2-API_payload\suite_criacao_usuario">
+<suite id="s1-s1" name="Tests" source="C:\Users\odair.oliveira\OneDrive - Volaris Group\Documentos\01_automacao\Fase_2-API_payload\suite_criacao_usuario\tests">
+<suite id="s1-s1-s1" name="Validar Criacao Usuario Avancado" source="C:\Users\odair.oliveira\OneDrive - Volaris Group\Documentos\01_automacao\Fase_2-API_payload\suite_criacao_usuario\tests\validar_criacao_usuario_avancado.robot">
+<test id="s1-s1-s1-t1" name="Criar usuário com e-mail em formato inválido" line="54">
+<kw name="Iniciar Sessão na API" owner="api_keywords" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-16T02:18:45.389370" level="INFO">&amp;{headers} = { Content-Type=application/json | Accept=application/json | Auth-Token=cmV2ZW5kYSBlbXByZXNhMSBzdGc1RFM= }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<arg>Auth-Token=${AUTH_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.388351" elapsed="0.001019"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-16T02:18:45.390366" level="INFO">Creating Session using : alias=api_sigom, url=https://10.90.60.45:8444, headers={'Content-Type': 'application/json', 'Accept': 'application/json', 'Auth-Token': 'cmV2ZW5kYSBlbXByZXNhMSBzdGc1RFM='},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=api_sigom</arg>
+<arg>url=${BASE_URL}</arg>
+<arg>headers=&amp;{headers}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-16T02:18:45.389370" elapsed="0.001981"/>
+</kw>
+<doc>Cria a sessão na API, define headers padrão e desabilita a verificação SSL.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.387351" elapsed="0.004000"/>
+</kw>
+<kw name="Gerar Payload com Email Inválido" owner="api_keywords">
+<kw name="Gerar Payload de Usuário Válido e Dinâmico" owner="api_keywords">
+<kw name="Name" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.393357" level="INFO">${nome_completo_faker} = Bella Sousa</msg>
+<var>${nome_completo_faker}</var>
+<doc>:example: 'John Doe'</doc>
+<status status="PASS" start="2025-08-16T02:18:45.393357" elapsed="0.000000"/>
+</kw>
+<kw name="First Name" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.394357" level="INFO">${nome_abreviado_faker} = Rafael</msg>
+<var>${nome_abreviado_faker}</var>
+<status status="PASS" start="2025-08-16T02:18:45.394357" elapsed="0.000000"/>
+</kw>
+<kw name="Cpf" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.395358" level="INFO">${cpf_dinamico_faker} = 950.284.736-92</msg>
+<var>${cpf_dinamico_faker}</var>
+<status status="PASS" start="2025-08-16T02:18:45.394357" elapsed="0.001001"/>
+</kw>
+<kw name="Rg" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.396359" level="INFO">${rg_dinamico_faker} = 35601728X</msg>
+<var>${rg_dinamico_faker}</var>
+<doc>Brazilian RG, return plain numbers.
+Check:  https://www.ngmatematica.com/2014/02/como-determinar-o-digito-verificador-do.html</doc>
+<status status="PASS" start="2025-08-16T02:18:45.396359" elapsed="0.000000"/>
+</kw>
+<kw name="Phone Number" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.397358" level="INFO">${telefone_dinamico_faker} = (051) 4738 2571</msg>
+<var>${telefone_dinamico_faker}</var>
+<status status="PASS" start="2025-08-16T02:18:45.397358" elapsed="0.001000"/>
+</kw>
+<kw name="Email" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.398358" level="INFO">${email_dinamico_faker} = piresjoao-pedro@example.org</msg>
+<var>${email_dinamico_faker}</var>
+<status status="PASS" start="2025-08-16T02:18:45.398358" elapsed="0.001001"/>
+</kw>
+<kw name="City" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.399359" level="INFO">${cidade_dinamica_faker} = Montenegro</msg>
+<var>${cidade_dinamica_faker}</var>
+<doc>:example: 'Sashabury'</doc>
+<status status="PASS" start="2025-08-16T02:18:45.399359" elapsed="0.001000"/>
+</kw>
+<kw name="Postcode" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.400359" level="INFO">${cep_dinamico_faker} = 03216057</msg>
+<var>${cep_dinamico_faker}</var>
+<doc>Randomly returns a postcode.
+:param formatted: True to allow formatted postcodes, else False (default True)
+:example formatted: '41224-212' '83992-291' '12324322'
+:example raw: '43920231' '34239530'</doc>
+<status status="PASS" start="2025-08-16T02:18:45.400359" elapsed="0.001011"/>
+</kw>
+<kw name="Bairro" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.401370" level="INFO">${bairro_dinamico_faker} = Vila Engenho Nogueira</msg>
+<var>${bairro_dinamico_faker}</var>
+<doc>Randomly returns a bairro (neighborhood) name.
+The names were taken from the city of Belo Horizonte - Minas Gerais
+:example: 'Serra'</doc>
+<status status="PASS" start="2025-08-16T02:18:45.401370" elapsed="0.000988"/>
+</kw>
+<kw name="License Plate" owner="FakerLibrary">
+<msg time="2025-08-16T02:18:45.403361" level="INFO">${matricula_dinamica_faker} = YAQ-2J81</msg>
+<var>${matricula_dinamica_faker}</var>
+<doc>Generate a license plate.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.402358" elapsed="0.001003"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-16T02:18:45.404359" level="INFO">&amp;{payload} = { matricula=YAQ-2J81 | nome=Bella Sousa | abreviaturaNome=Rafael | dataNascimento=01/01/1980 | categoria=1 | entidadeId=1 | telefone=(051) 4738 2571 | cpf=950.284.736-92 | rg=35601728X | endereco=Rua ...</msg>
+<var>&amp;{payload}</var>
+<arg>matricula=${matricula_dinamica_faker}</arg>
+<arg>nome=${nome_completo_faker}</arg>
+<arg>abreviaturaNome=${nome_abreviado_faker}</arg>
+<arg>dataNascimento=01/01/1980</arg>
+<arg>categoria=1</arg>
+<arg>entidadeId=1</arg>
+<arg>telefone=${telefone_dinamico_faker}</arg>
+<arg>cpf=${cpf_dinamico_faker}</arg>
+<arg>rg=${rg_dinamico_faker}</arg>
+<arg>endereco=Rua Gerada Dinamicamente</arg>
+<arg>numeroEndereco=500</arg>
+<arg>complementoEndereco=Bloco A</arg>
+<arg>bairro=${bairro_dinamico_faker}</arg>
+<arg>cidade=${cidade_dinamica_faker}</arg>
+<arg>cep=${cep_dinamico_faker}</arg>
+<arg>uf=MG</arg>
+<arg>nomeMae=Maria Gerada Dinamicamente</arg>
+<arg>curso=Ciência da Computação</arg>
+<arg>grau=Superior</arg>
+<arg>serie=3º Período</arg>
+<arg>carteiraEstudante=2025998877</arg>
+<arg>carteiraProfissional=</arg>
+<arg>observacao=usuario_dinamico_criado_pela_automacao_de_testes.</arg>
+<arg>integraBU=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.403361" elapsed="0.001998"/>
+</kw>
+<return>
+<value>&amp;{payload}</value>
+<status status="PASS" start="2025-08-16T02:18:45.405359" elapsed="0.000000"/>
+</return>
+<msg time="2025-08-16T02:18:45.406360" level="INFO">&amp;{payload} = { matricula=YAQ-2J81 | nome=Bella Sousa | abreviaturaNome=Rafael | dataNascimento=01/01/1980 | categoria=1 | entidadeId=1 | telefone=(051) 4738 2571 | cpf=950.284.736-92 | rg=35601728X | endereco=Rua ...</msg>
+<var>&amp;{payload}</var>
+<doc>Cria um dicionário (payload) com dados de usuário gerados dinamicamente.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.392358" elapsed="0.014002"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${payload}</arg>
+<arg>email=usuario@@dominio.com</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.406360" elapsed="0.000000"/>
+</kw>
+<return>
+<value>&amp;{payload}</value>
+<status status="PASS" start="2025-08-16T02:18:45.406360" elapsed="0.000999"/>
+</return>
+<msg time="2025-08-16T02:18:45.407359" level="INFO">&amp;{payload} = { matricula=YAQ-2J81 | nome=Bella Sousa | abreviaturaNome=Rafael | dataNascimento=01/01/1980 | categoria=1 | entidadeId=1 | telefone=(051) 4738 2571 | cpf=950.284.736-92 | rg=35601728X | endereco=Rua ...</msg>
+<var>&amp;{payload}</var>
+<doc>Gera um payload com email em formato inválido.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.391351" elapsed="0.016008"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Payload Inválido: ${payload}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.407359" elapsed="0.001330"/>
+</kw>
+<kw name="Criar um novo usuário via API" owner="api_keywords">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-16T02:18:46.371936" level="INFO">POST Request : url=https://10.90.60.45:8444/server-sigom/rest/usuario 
+ path_url=/server-sigom/rest/usuario 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Auth-Token': 'cmV2ZW5kYSBlbXByZXNhMSBzdGc1RFM=', 'Content-Length': '734'} 
+ body=b'{"matricula": "YAQ-2J81", "nome": "Bella Sousa", "abreviaturaNome": "Rafael", "dataNascimento": "01/01/1980", "categoria": "1", "entidadeId": "1", "telefone": "(051) 4738 2571", "cpf": "950.284.736-92", "rg": "35601728X", "endereco": "Rua Gerada Dinamicamente", "numeroEndereco": "500", "complementoEndereco": "Bloco A", "bairro": "Vila Engenho Nogueira", "cidade": "Montenegro", "cep": "03216057", "uf": "MG", "nomeMae": "Maria Gerada Dinamicamente", "curso": "Ci\\u00eancia da Computa\\u00e7\\u00e3o", "grau": "Superior", "serie": "3\\u00ba Per\\u00edodo", "carteiraEstudante": "2025998877", "carteiraProfissional": "", "observacao": "usuario_dinamico_criado_pela_automacao_de_testes.", "integraBU": "1", "email": "usuario@@dominio.com"}' 
+ </msg>
+<msg time="2025-08-16T02:18:46.371936" level="INFO">POST Response : url=https://10.90.60.45:8444/server-sigom/rest/usuario 
+ status=201, reason=Created 
+ headers={'Content-Encoding': 'gzip', 'Expires': '0', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Set-Cookie': 'JSESSIONID=k5OeX6QgFKINFRYbXWq2d9OGce5NVGx91nDnTpqy.gde-aut12; path=/server-sigom; secure; HttpOnly', 'Access-Control-Allow-Headers': 'Authorization', 'X-XSS-Protection': '1; mode=block', 'Pragma': 'no-cache', 'Date': 'Sat, 16 Aug 2025 05:18:46 GMT', 'Connection': 'keep-alive', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'X-Powered-By': 'Undertow/1', 'Server': 'WildFly/8', 'X-Frame-Options': 'DENY', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json', 'Content-Length': '96', 'Access-Control-Max-Age': 'true'} 
+ body={"codigo":201,"mensagem":"Usuário inserido com sucesso!","usuarioId":621097} 
+ </msg>
+<msg time="2025-08-16T02:18:46.371936" level="INFO">C:\Users\odair.oliveira\OneDrive - Volaris Group\Documentos\01_automacao\Fase_2-API_payload\suite_criacao_usuario\.venv\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.90.60.45'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-08-16T02:18:46.372841" level="INFO">${resposta} = &lt;Response [201]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=api_sigom</arg>
+<arg>url=${ENDPOINT_USUARIO}</arg>
+<arg>json=${payload_usuario}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.409659" elapsed="0.963182"/>
+</kw>
+<return>
+<value>${resposta}</value>
+<status status="PASS" start="2025-08-16T02:18:46.372841" elapsed="0.001001"/>
+</return>
+<msg time="2025-08-16T02:18:46.373842" level="INFO">${resposta} = &lt;Response [201]&gt;</msg>
+<var>${resposta}</var>
+<arg>payload_usuario=${payload}</arg>
+<doc>Envia uma requisição POST para criar um novo usuário.</doc>
+<status status="PASS" start="2025-08-16T02:18:45.408689" elapsed="0.965153"/>
+</kw>
+<tag>email</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2025-08-16T02:18:45.382389" elapsed="0.992452"/>
+</test>
+<doc>Suite de testes avançados para o endpoint de criação de usuários.</doc>
+<status status="PASS" start="2025-08-16T02:18:44.386998" elapsed="1.991845"/>
+</suite>
+<status status="PASS" start="2025-08-16T02:18:44.381038" elapsed="2.001805"/>
+</suite>
+<status status="PASS" start="2025-08-16T02:18:44.347966" elapsed="2.038877"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">email</stat>
+<stat pass="1" fail="0" skip="0">negativo</stat>
+</tag>
+<suite>
+<stat name="Suite Criacao Usuario" id="s1" pass="1" fail="0" skip="0">Suite Criacao Usuario</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Suite Criacao Usuario.Tests</stat>
+<stat name="Validar Criacao Usuario Avancado" id="s1-s1-s1" pass="1" fail="0" skip="0">Suite Criacao Usuario.Tests.Validar Criacao Usuario Avancado</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

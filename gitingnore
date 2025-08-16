@@ -1,0 +1,23 @@
+# Ignorar ambiente virtual
+robot-env/
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar arquivos de logs e relatórios gerados
+reports/
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar configurações do VS Code (se preferir, pode versionar)
+.vscode/
+
+# Ignorar arquivos temporários do Robot Framework
+*.log
+*.html
+*.xml
